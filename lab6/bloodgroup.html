@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Group</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Blood Group</legend>
+        <select name="bg" id="bg">
+            <option value="" disabled>Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+        <hr>
+        <button type="button" onclick="check()">Submit</button>
+    </fieldset>
+
+    <script>
+        function check() {
+            let selectElement = document.getElementById("bg");
+            let selectedValue = selectElement.value;
+
+            if (!selectedValue) {
+                alert("Please select a blood group.");
+                return;
+            }
+
+            alert("You have selected the blood group: " + selectedValue + ". ALL conditions are fulfilled.");
+        }
+    </script>
+</body>
+</html>

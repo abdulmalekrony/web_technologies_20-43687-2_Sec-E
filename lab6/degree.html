@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Degree</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Degree</legend>
+        <label for="SSC">
+            <input type="checkbox" name="dg" id="SSC" value="SSC">SSC
+        </label>
+        <label for="HSC">
+            <input type="checkbox" name="dg" id="HSC" value="HSC">HSC
+        </label>
+        <label for="BSc">
+            <input type="checkbox" name="dg" id="BSc" value="BSc">BSc
+        </label>
+        <label for="MSc">
+            <input type="checkbox" name="dg" id="MSc" value="MSc">MSc
+        </label>
+        <hr>
+        <button type="button" onclick="check()">Submit</button>
+    </fieldset>
+
+    <script>
+        function check() {
+            const checkboxes = document.getElementsByName("dg");
+            let selectedDegrees = [];
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    selectedDegrees.push(checkboxes[i].value);
+                }
+            }
+
+            if (selectedDegrees.length === 0) {
+                alert("Please select at least one degree option.");
+            } else {
+                alert("You have selected the following degrees: " + selectedDegrees.join(", "));
+            }
+        }
+    </script>
+</body>
+</html>

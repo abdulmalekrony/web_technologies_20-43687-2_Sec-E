@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth</title>
+</head>
+<body>
+        <fieldset>
+            <legend>Date of Birth</legend>
+            &nbsp&nbsp
+            dd &nbsp&nbsp&nbsp&nbsp&nbsp
+            mm &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            yyyy
+            <br>
+            <input type="number" name="day" id="day" style="width: 30px;"> <b>/</b>
+            <input type="number" name="month" id="month" style="width: 30px;"> <b>/</b>
+            <input type="number" name="year" id="year" style="width: 60px"> 
+            <hr>
+            <button type="button" onclick="check()">Submit</button>
+        </fieldset>
+
+        <script>
+            function check() {
+                const dayInput = document.getElementById('day');
+                const monthInput = document.getElementById('month');
+                const yearInput = document.getElementById('year');
+
+                // Parse the input values to integers
+                const dayValue = parseInt(dayInput.value);
+                const monthValue = parseInt(monthInput.value);
+                const yearValue = parseInt(yearInput.value);
+
+                if (
+                    dayValue < 1 || dayValue > 31 || isNaN(dayValue) ||
+                    monthValue < 1 || monthValue > 12 || isNaN(monthValue) ||
+                    yearValue < 1900 || yearValue > (new Date()).getFullYear() || isNaN(yearValue)
+                ) {
+                    alert("Please enter a valid date of birth.");
+                    return;
+                }
+                if (!dayInput.value || !monthInput.value || !yearInput.value) {
+                    alert("Date of Birth can't be empty..!");
+                    return;
+                }
+
+                alert("ALL conditions are fulfilled.");
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name</title>
+</head>
+<body>
+    <h1>Name Validation</h1>
+    <p>Enter your name:</p>
+    <input type="text" name="name" id="name">
+    <div id="error-message" style="color: red;"></div>
+    <button onclick="check()">Submit</button>
+
+    <script>
+        function check() {
+            const nameInput = document.getElementById('name');
+            const errorMessage = document.getElementById('error-message');
+            const name = nameInput.value.trim();
+            
+            function containsOnlyValidCharacters(name) {
+                for (let i = 0; i < name.length; i++) {
+                    let char = name[i];
+                    if (!((char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z') || char === '.' || char === '-')) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            if (name === "") {
+                errorMessage.textContent = "Name can't be empty..!";
+            } else if (!containsOnlyValidCharacters(name)) {
+                errorMessage.textContent = "Name contains invalid characters..!";
+            } else {
+                errorMessage.textContent = "";  // Clear any previous error messages
+                alert("Name is valid. All conditions are fulfilled.");
+            }
+        }
+    </script>
+</body>
+</html>
