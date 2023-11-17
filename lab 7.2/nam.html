@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <form onsubmit="return validateName()">
+        Name: <input type="text" id="Name" value="">
+        <span id="Message"> </span>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateName() {
+            var nameInput = document.getElementById("Name").value.trim();
+            var messageElement = document.getElementById("Message");
+
+            if (nameInput === "") {
+                displayMessage("Cannot be empty");
+                return false;
+            }
+
+            var words = nameInput.split(' ');
+            if (words.length < 2) {
+                displayMessage("Should contain at least two words");
+                return false;
+            }
+
+            if (!isValidCharacters(nameInput)) {
+                displayMessage("Only alphabets, dots(.), or dashes(-) allowed");
+                return false;
+            }
+
+            if (!isAlpha(nameInput.charAt(0))) {
+                displayMessage("Name must start with a letter");
+                return false;
+            }
+
+            return true;
+
+            function isValidCharacters(input) {
+                return /^[a-zA-Z. \-]+$/.test(input);
+            }
+
+            function isAlpha(ch) {
+                return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
+            }
+
+            function displayMessage(message) {
+                messageElement.innerHTML = message;
+            }
+        }
+    </script>
+</body>
+
+</html>

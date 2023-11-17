@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Profile</title>
+</head>
+
+<body>
+    <form onsubmit="return validateForm()">
+        <fieldset>
+            <legend>Profile Picture</legend>
+            <label for="userId">User Id</label>
+            <input type="text" name="userId" id="userId" required pattern="\d+" title="User Id must be a positive number">
+            <br>
+            <label for="picture">Picture</label>
+            <input type="file" name="picture" id="picture" accept="image/*" required>
+            <br>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+    <script>
+        function validateForm() {
+            let userId = document.getElementById('userId').value;
+            let picture = document.getElementById('picture').value;
+
+            if (!userId.match(/^\d+$/)) {
+                alert("User Id must be a positive number");
+                return false;
+            }
+
+            if (picture === "") {
+                alert("Picture cannot be empty");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>
